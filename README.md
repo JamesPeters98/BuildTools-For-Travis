@@ -30,3 +30,8 @@ cache:
   directories:
   - $HOME/.m2
 ```
+
+This enables the use of NMS code in travis whilst also preventing extremely long build times due to BuildTools after caching.
+
+The initial build of this project takes ~ [11 minutes](https://travis-ci.com/github/JamesPeters98/BuildTools-For-Travis/builds/174323317).
+The second build after caching takes ~ [40 seconds](https://travis-ci.com/github/JamesPeters98/BuildTools-For-Travis/builds/174323677)
