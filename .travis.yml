@@ -1,0 +1,23 @@
+language: java
+
+#This checks if each CraftBukkit version added into 'BuildTools/build.sh' is cached and if not uses BuildTools to install it.
+before_install:
+- cd BuildTools
+- bash build.sh
+- cd ../
+
+#Clean the project and install dependencies
+install:
+- mvn -U clean install
+
+#Package the project using Maven.
+script:
+- mvn package -DskipTests
+
+#Cache the Maven local repo and the BuildTools git repos.
+cache:
+  directories:
+  - $HOME/.m2
+  - BuildTools/Bukkit
+  - BuildTools/CraftBukkit
+  - BuildTools/Spigot
